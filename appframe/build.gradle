@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+
+    }
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        lintOptions {
+            disable 'GoogleAppIndexingWarning'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    api "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    api "com.android.support:support-annotations:$rootProject.supportV7LibraryVersion"
+    api "com.android.support:design:$rootProject.supportV7LibraryVersion"
+    api "com.android.support:appcompat-v7:$rootProject.supportV7LibraryVersion"
+    api "com.android.support:support-vector-drawable:$rootProject.supportV7LibraryVersion"
+    api "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeCompilerVersion"
+    api "org.litepal.android:core:$rootProject.litepalVersion"
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
+    api "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3LoggingInterceptorVersion"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxjava2RxandroidVersion"
+    api "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2ConverterGsonVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2AdapterRxjava2Version"
+    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.baseRecyclerViewAdapterHelperVersion"
+    api "org.ligboy.retrofit2:converter-fastjson-android:$rootProject.fastjsonAndroidVersion"
+    api "com.youth.banner:banner:$rootProject.bannerVersion"
+    api "com.zyao89:zloading:$rootProject.zloadingVersion"
+}

@@ -1,0 +1,11 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation" >
+    <string name="app_name">AppFrame</string>
+    <string name="app_title">Title</string>
+    <string name="app_demo">Demo</string>
+    <string name="setting">设置</string>
+    <string name="jump">跳转</string>
+    <string name="secondactivity">SecondActivity</string>
+    <string name="loading">加载中。。。</string>
+</resources>
