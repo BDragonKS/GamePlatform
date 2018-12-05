@@ -3,7 +3,6 @@ package com.ljhl.gameplatform;
 import com.longruan.mobile.appframe.base.AbsBasePresenter;
 import com.longruan.mobile.appframe.base.BaseActivity;
 import com.longruan.mobile.appframe.utils.NetWorkUtils;
-import com.loveplusplus.update.UpdateDialog;
 
 import android.Manifest;
 import android.app.DownloadManager;
@@ -18,7 +17,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -35,9 +33,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import butterknife.BindView;
 
@@ -53,26 +48,21 @@ public class WebActivity extends BaseActivity {
     public static final String EXTRA_WEB_TITLE = "extra_web_title";
     public static final String EXTRA_WEB_URL = "extra_web_url";
     public static final String EXTRA_CONTENT_TYPE = "extra_content_type";
-    public static final int CONTENT_TYPE_REPORT = 1;
-    public static final int CONTENT_TYPE_AUTOMATION = 2;
 
     private boolean isContinue = false;
     private String mUrl = "";
-    private int contentType = 0;
 
     @BindView(R.id.web_view)
     WebView webView;
     @BindView(R.id.top_progress)
     WebProgressBar webProgressBar;
-    private String cookieStr;
     private DownloadCompleteReceiver receiver;
     private String fileName;
+    private String cookieStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        installAPk();
 
         initNoToolbar(R.layout.activity_web);
         mUrl = Constants.BASE_URL;
@@ -317,7 +307,7 @@ public class WebActivity extends BaseActivity {
 
                         handlerIntent.setDataAndType(uri, "application/vnd.android.package-archive");
 
-                        if ((Build.VERSION.SDK_INT >= 24)) {//判读版本是否在7.0以上
+                        if ((Build.VERSION.SDK_INT >= 24)) {//判断版本是否在7.0以上
                             //添加这一句表示对目标应用临时授权该Uri所代表的文件
                             handlerIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         }
@@ -327,7 +317,6 @@ public class WebActivity extends BaseActivity {
                         }
                     }
                 } else if (DownloadManager.ACTION_NOTIFICATION_CLICKED.equals(intent.getAction())) {
-
 
                 }
             }
